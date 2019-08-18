@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteCond %{HTTP_HOST} www.famisec.be [NC]
+RewriteCond %{HTTP_HOST} famisec.be [NC]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://www.famisec.be/ [R,L]
+
+
