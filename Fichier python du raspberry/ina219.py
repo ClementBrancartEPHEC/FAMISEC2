@@ -8,8 +8,8 @@ ina = INA219(SHUNT_OHMS, MAX_EXPECTED_AMPS)
 ina.configure(ina.RANGE_16V)
 
 #connexion database
-conn = pymysql.connect(host='127.0.0.1',user='root',password='password',db='famisec')
-#conn = pymysql.connect(host='famisecbtaclem19.mysql.db',user='famisecbtaclem19',password='Brancart18',db='famisecbtaclem19')
+#conn = pymysql.connect(host='127.0.0.1',user='root',password='password',db='famisec')
+conn = pymysql.connect(host='famisecbtaclem19.mysql.db',user='famisecbtaclem19',password='Brancart18',db='famisecbtaclem19')
 mycursor = conn.cursor()
 
 def read_ina219():
