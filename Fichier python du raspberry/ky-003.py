@@ -16,7 +16,7 @@ print ("Sensor-Test:Ctrl + C pour terminer le test")
 
 #connexion mysql
 #conn = pymysql.connect(host='127.0.0.1',user='root',password='password',db='famisec')
-conn = pymysql.connect(host='famisecbtaclem19.mysql.db',user='famisecbtaclem19',password='Brancart18',database='famisecbtaclem19',unix_socket='TCP')
+conn = pymysql.connect(host='xxxxxxxxxxxxxx',user='xxxxxxxxxxx',password='xxxxxxxxxxxx',database='xxxxxxxxxxx',unix_socket='TCP')
 mycursor = conn.cursor()
 
 # Cette fonction de sortie est exécutée par détection du signal
