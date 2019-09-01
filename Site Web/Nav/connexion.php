@@ -77,7 +77,8 @@
                       echo '<a href="../INC/logout.php?logout" id="deconnect">Se déconnecter</a><br><br>';
                       echo '<a href="../Nav/administration.php?logout" id="Admin">Administration</a>';
                     } else {
-                    echo '<a href="../INC/logout.php?logout" id="deconnect">Se déconnecter</a>';
+                    echo '<a href="../INC/logout.php?logout" id="deconnect">Se déconnecter</a><br><br>';
+                    echo '<a href="infosData.php" id="utiliserData">utilisation de mes données</a>';
                     }
                   }
                 ?>  

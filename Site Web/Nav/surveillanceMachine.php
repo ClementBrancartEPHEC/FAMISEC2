@@ -1,6 +1,10 @@
 <?php
     include_once('../INC/machine.php');
     session_start();
+
+    if($_SESSION['username']!='admin'){
+      echo "<h1>Vous n'avez pas les droits</h1><br><li><a href='../Nav/accueil.php' id='SiteWeb'>Site de FAMISEC</a></li>";
+  } else {
 ?>    
 
 <!DOCTYPE html>
@@ -202,3 +206,5 @@
       </footer>
  </body>
 </html>
+
+<?php } ?>

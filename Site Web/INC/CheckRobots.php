@@ -15,4 +15,5 @@ function code($nb_car, $chaine = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'){
 
 /* on stock le string dans une $_session */
 $_SESSION['confirmation'] = code(31);
+$_SESSION['mdpConf']= code(31);
 ?>

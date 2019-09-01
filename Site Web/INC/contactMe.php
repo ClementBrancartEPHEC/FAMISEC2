@@ -6,9 +6,9 @@ if(isset($_POST['Envoi'])){
   
     if(isset($_POST['mail']) && isset($_POST['sujet']) && isset($_POST['message'])){
 
-        $mail=$_POST['mail'];
-        $sujet=$_POST['sujet'];
-        $message=$_POST['message'];
+        $mail=htmlspecialchars($_POST['mail']);
+        $sujet=htmlspecialchars($_POST['sujet']);
+        $message=htmlspecialchars($_POST['message']);
         $check=$_POST[$_SESSION['confirmation']];
 
         if(!empty($mail) && !empty($sujet) && !empty($message) && isset($_POST[$_SESSION['confirmation']])){

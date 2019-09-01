@@ -1,27 +1,40 @@
 <?php
 require_once('connect.php');
 session_start();
+
 @$mysqli = new mysqli($servername, $username, $password, $db);
 
-     if(isset($_POST['Login'])){
-         if(empty($_POST['username']) || empty($_POST['password'])){
-             header("location:../Nav/connexion.php?Empty= remplir les champs vides");
-         }
-         else{
-             $query = "select password from userslog where username='".$_POST['username']."'";
+    if(isset($_POST['Login'])){
+        if(empty($_POST['username']) || empty($_POST['password'])){
+            header("location:../Nav/connexion.php?Empty= remplir les champs vides");
+        }
+        else{
+            $username = htmlspecialchars($_POST['username']);
+            $password = htmlspecialchars($_POST['password']);
 
-             $result = mysqli_query($connect, $query);
+            $stmt = $mysqli->prepare("select password from userslog where username=?");
+    
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $stmt->bind_result($stored_password);
+            $stmt->fetch();
+            $stmt->close();
 
-             $stored_password = mysqli_fetch_assoc($result);
-             $password_string = implode(',',$stored_password); //on repasse le tableau en mode string
 
+            if(password_verify($password, $stored_password)){
 
-             if(password_verify($_POST['password'], $password_string)){
-                $query="select * from userslog where username='".$_POST['username']."' and password='".$password_string."'";
-                $result=mysqli_query($connect,$query);
+                $stmt = $mysqli->prepare("select username from userslog where username=? and password=?");
+
+                $stmt->bind_param("ss", $username, $stored_password);
+                $stmt->execute();
+                $stmt->bind_result($userResult);
+                $stmt->fetch();
+                $stmt->close();
+
+                //header("location:../Nav/connexion.php?Invalide= resultat =".$userResult."");
                 
-                if(mysqli_fetch_assoc($result)){
-                    $_SESSION['username']=$_POST['username'];
+                if(!empty($userResult)){
+                    $_SESSION['username']=$username;
                     header("location:../Nav/surveillance.php");
    
                        if($_SESSION['username']==='admin'){
@@ -32,10 +45,10 @@ session_start();
                     header("location:../Nav/connexion.php?Invalide= Entrez le bon nom d'utilisateur ou créez un compte");
                 }
 
-             } else {
+            } else {
                 header("location:../Nav/connexion.php?Invalide= Entrez le bon mot de passe ou créez un compte");
-             }
+            }
          }
      }
-     $mysqli->close();     
+     $mysqli->close();         
 ?>

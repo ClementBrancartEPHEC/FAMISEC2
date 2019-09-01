@@ -1,5 +1,5 @@
 <?php
- include_once('../INC/process.php')
+include_once('../INC/process.php')
 ?>
 
 <!DOCTYPE html>
@@ -73,6 +73,8 @@
                 <input type="text" value="" placeholder="Nom d'utilisateur" id="username" name="username"/>
                 <input type="email" value="" placeholder="Votre adresse mail liée au compte" id="mail" name="mail"/>
                 <input type="password" value="" placeholder="Nouveau mot de passe" id="password" name="newPassword"/>
+                <i><b> Confirmation du changement: </b></i>
+                <input type="checkbox" name="checkMdp">
                 <button name="change">Changer mot de passe</button>
                 <br>
                 <br>

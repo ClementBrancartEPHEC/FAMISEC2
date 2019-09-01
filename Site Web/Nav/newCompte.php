@@ -55,10 +55,12 @@
                 <input type="text" value="" placeholder="Nom d'utilisateur" id="username" name="newUser"/>
                 <input type="password" value="" placeholder="Mot de passe" id="password" name="newPassword"/>
                 <input type="email" value="" placeholder="Adresse mail" id="mail" name="newMail"/>
+                <i><b> Confirmation de la création: </b></i>
+                <input type="checkbox" name="checkNew">
                 <button name="Save">S'enregistrer</button>
                 <br>
                 <br>
-                <a href="forgotCompte.php" id="newPswd">identifiants oubliés?</a>  
+                <a href="infosData.php" id="utiliserData">utilisation de mes données</a>  
             </form>
           </div> 
           <div id="contenu">

@@ -4,7 +4,6 @@ require_once('connect.php');
 
     //---------------------------------MACHINE UNE----------------------------------------------
 
-
     $queryPorteUne = "SELECT porte from etatmachine WHERE nom='machineUne'";
     if (!$resultPorte1 = $mysqli->query($queryPorteUne)) {
         // Oh non ! La requête a échoué. 

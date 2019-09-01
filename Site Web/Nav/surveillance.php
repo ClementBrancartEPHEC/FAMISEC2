@@ -1,6 +1,7 @@
 <?php
 include_once('../INC/machine.php');
 include_once('../INC/etatMachine.php');
+include_once('../INC/gestBdd.php');
 session_start();
 ?>
 
@@ -49,6 +50,13 @@ session_start();
      <?php
         if(isset($_SESSION['username'])){
                 echo 'Bonjour: '.strip_tags($_SESSION['username']); ?>
+                <?php
+                   if(@$_GET['Invalide']==true){
+                ?>
+                  <div> <?= $_GET['Invalide'] ?> </div>
+                <?php
+                   } 
+                ?>
                <div class="container">
                 <div class="wrapper"> 
                     <?php
@@ -56,6 +64,8 @@ session_start();
                     //----------------------
                     // ON GERE LA MACHINE UN 
                     //----------------------
+                    $newPorte1;
+                    $newFonction1;
 
                     if ($valor=='off'){ ?>
                         <div id="machineOff" style="background-color:lightcoral">Machine Un <br>
@@ -81,9 +91,11 @@ session_start();
                     //----------------------
                     // ON GERE LA MACHINE DEUX 
                     //----------------------
+                    //machine2Porte();
+                    //machine2Fonction();
 
                     if ($valor2=='off'){ ?>
-                        <div id="machineOff" style="background-color:lightcoral">Machine Un <br>
+                        <div id="machineOff" style="background-color:lightcoral">Machine Deux <br>
                         <div id="hs1">Hors-Service</div> </div>
                     <?php } 
                     if ($valor2=='on'){ 
@@ -209,7 +221,7 @@ session_start();
                     //----------------------
 
                     if ($valor7=='off'){ ?>
-                        <div id="machineOff" style="background-color:lightcoral">Machine Trois <br>
+                        <div id="machineOff" style="background-color:lightcoral">Machine Sept <br>
                         <div id="hs1">Hors-Service</div> </div>
                     <?php } 
                     if ($valor7=='on'){ 
@@ -234,7 +246,7 @@ session_start();
                     //----------------------
 
                     if ($valor8=='off'){ ?>
-                        <div id="machineOff" style="background-color:lightcoral">Machine Trois <br>
+                        <div id="machineOff" style="background-color:lightcoral">Machine Huit <br>
                         <div id="hs1">Hors-Service</div> </div>
                     <?php } 
                     if ($valor8=='on'){ 

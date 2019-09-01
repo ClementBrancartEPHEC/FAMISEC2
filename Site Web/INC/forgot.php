@@ -9,17 +9,15 @@ if(isset($_POST['Recup'])){
         header("location:../Nav/forgotCompte.php?Empty= remplir le champ email");
 
     } else {
-    
-        $query = "select adresse_mail from userslog where adresse_mail='".$_POST['mail2']."'";
 
-        if (!$result = $mysqli->query($query)) {
-            // Oh non ! La requête a échoué. 
-            echo "Désolé, le site web subit des problèmes.";
-            exit;
-        }
+        $mail2 = htmlspecialchars($_POST['mail2']);
 
-        $stored_email = mysqli_fetch_assoc($result);
-        $email_string = implode(',',$stored_email);
+        $stmt = $mysqli->prepare("select adresse_mail from userslog where adresse_mail=?");
+        $stmt->bind_param("s", $mail2);
+        $stmt->execute();
+        $stmt->bind_result($stored_email);
+        $stmt->fetch();
+        $stmt->close();
 
 /**
  * Si le résultat de email est vide alors on va envoyer un message d'erreur
@@ -35,36 +33,34 @@ if(isset($_POST['Recup'])){
 */     
         else { 
 
-            $query = "select username from userslog where adresse_mail='".$_POST['mail2']."'";
+            $stmt = $mysqli->prepare("select username from userslog where adresse_mail=?");
 
-            if (!$result = $mysqli->query($query)) {
-                // Oh non ! La requête a échoué. 
-                echo "Désolé, le site web subit des problèmes.";
-                exit;
-            }
-                $stored_username = mysqli_fetch_assoc($result);
-                $username_string = implode(',',$stored_username);
+            $stmt->bind_param("s", $mail2);
+            $stmt->execute();
+            $stmt->bind_result($stored_username);
+            $stmt->fetch();
+            $stmt->close();
 
 
-                $mail='clem.brancart@gmail.com';
-                $sujet='Identifiants famisec.be';
-                $messageUsername=$username_string;
-                $messageEmail=$email_string;
+            $mail='HE201330@students.ephec.be';
+            $sujet='Identifiants famisec.be';
+            $messageUsername=$stored_username;
+            $messageEmail=$stored_email;
                     
-                $destinataire=$_POST['mail2'];
-                $objet="Formulaire de contact";
-                $msg="Nouveau message \n
-                Destinateur = ".$mail." \n
-                sujet = ".$sujet." \n
-                Votre mail = ".$messageEmail." \n
-                Votre Username = ".$messageUsername."";
-                $entete = "From:". $mail." \n Reply-To:". $mail."";
+            $destinataire=$_POST['mail2'];
+            $objet="Identifiants famisec.be";
+            $msg="Nouveau message \n
+            Destinateur = ".$mail." \n
+            sujet = ".$sujet." \n
+            Votre mail = ".$messageEmail." \n
+            Votre Username = ".$messageUsername."";
+            $entete = "From:". $mail." \n Reply-To:". $mail."";
         
-                    if(mail($destinataire,$objet,$msg,$entete)){
-                        header("location:../Nav/forgotCompte.php?Empty= Username envoyé sur votre adresse (peut se retrouver dans les spams)");
-                    } else {
-                        header("location:../Nav/forgotCompte.php?Empty= Veuillez rééssayer");
-                    }    
+            if(mail($destinataire,$objet,$msg,$entete)){
+                header("location:../Nav/forgotCompte.php?Empty= Infos envoyées sur votre adresse");
+            } else {
+                header("location:../Nav/forgotCompte.php?Empty= Veuillez rééssayer");
+            }    
         
         }
     
