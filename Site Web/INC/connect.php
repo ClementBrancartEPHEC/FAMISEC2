@@ -1,9 +1,9 @@
 <?php
  
-$servername = "famisecbtaclem19.mysql.db";
-$username = "famisecbtaclem19";
-$db = "famisecbtaclem19";
-$password = "Brancart18";
+$servername = "xxxxxxxxxxxxxxx";
+$username = "xxxxxxxxxxxx";
+$db = "xxxxxxxxxx";
+$password = "xxxxxxxxxxx";
 
 @$connect = new mysqli($servername, $username, $password, $db);
 
