@@ -16,30 +16,20 @@ print ("Sensor-Test:Ctrl + C pour terminer le script")
 
 #connexion mysql
 #conn = pymysql.connect(host='127.0.0.1',user='root',password='password',db='famisec')
-<<<<<<< HEAD
-conn = pymysql.connect(host='mysql-famisec.alwaysdata.net',user='famisec_btaclem',password='Brancart18',database='famisec_btaclem19')
-=======
-conn = pymysql.connect(host='xxxxxxxxxxxxxx',user='xxxxxxxxxxx',password='xxxxxxxxxxxx',database='xxxxxxxxxxx',unix_socket='TCP')
->>>>>>> 4f0109e206d1220e3bd0f72d83e15376f770eb6e
+
+conn = pymysql.connect(host='xxxxxxxxxxxxxx',user='xxxxxxxxxxx',password='xxxxxxxxxxxx',database='xxxxxxxxxxx')
 mycursor = conn.cursor()
 
 # Cette fonction de sortie est exécutée par détection du signal
 def fonctionDeSortie(self):
         if GPIO.input(24):
-<<<<<<< HEAD
+
             print("porte ouverte")
-=======
-            print("Signal pas détecté")
->>>>>>> 4f0109e206d1220e3bd0f72d83e15376f770eb6e
             sql = "UPDATE etatmachine SET porte = 'ouverte' WHERE nom='machineUne'"
             mycursor.execute(sql)
             conn.commit()
         else:
-<<<<<<< HEAD
             print("porte fermee")
-=======
-            print("Signal détecté")
->>>>>>> 4f0109e206d1220e3bd0f72d83e15376f770eb6e
             sql = "UPDATE etatmachine SET porte = 'fermee' WHERE nom='machineUne'"
             mycursor.execute(sql)
             conn.commit()
@@ -54,10 +44,6 @@ try:
     while True:
         fonctionDeSortie(0)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4f0109e206d1220e3bd0f72d83e15376f770eb6e
 # réinitialisation de tous les GPIO en entrées
 except KeyboardInterrupt:
         GPIO.cleanup()
