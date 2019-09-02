@@ -9,11 +9,8 @@ ina.configure(ina.RANGE_16V)
 
 #connexion database
 #conn = pymysql.connect(host='127.0.0.1',user='root',password='password',db='famisec')
-<<<<<<< HEAD
-conn = pymysql.connect(host='mysql-famisec.alwaysdata.net',user='famisec_btaclem',password='Brancart18',db='famisec_btaclem19')
-=======
+
 conn = pymysql.connect(host='xxxxxxxx',user='xxxxxxxxxxx',password='xxxxxxxxxx',db='xxxxxxxxxx')
->>>>>>> 4f0109e206d1220e3bd0f72d83e15376f770eb6e
 mycursor = conn.cursor()
 
 def read_ina219():
