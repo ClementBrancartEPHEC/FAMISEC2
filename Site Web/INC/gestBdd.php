@@ -1,9 +1,9 @@
 <?php
 
-$servername2 = "mysql-famisec.alwaysdata.net";
-$username2 = "famisec_btaclem";
-$db2 = "famisec_btaclem19";
-$password2 = "Brancart18";
+$servername2 = "xxxxxxxxxxxx";
+$username2 = "xxxxxxxxxxx";
+$db2 = "xxxxxxxxxxxx";
+$password2 = "xxxxxxxxxxxx";
 
 @$mysqli2 = new mysqli($servername2, $username2, $password2, $db2);
 
